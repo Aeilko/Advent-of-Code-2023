@@ -1,0 +1,7 @@
+# Advent of Code
+/session
+/inputs/*
+!/inputs/test/
+
+# JetBrains
+.idea/
