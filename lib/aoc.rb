@@ -38,7 +38,7 @@ module AOC
 				@input = File.read(path)
 			end
 			if @test_input.nil? and not (@ans_test1.nil? and @ans_test2.nil?)
-				# TODO: Allow part 1 and 2 to have different inputs
+				# TODO: Allow part 1 and 2 to have different test inputs
 				# Load test input of this day
 				path = "inputs/test/test_input%02d" % @num
 				if File.exist?(path)
@@ -98,7 +98,7 @@ module AOC
 
 			url = "#{@base_url}/#{AOC::YEAR}/day/#{day}/input"
 			headers = [
-				"User-Agent" => "https://github.com/Aeilko/Advent-of-Code-#{@year}",
+				"User-Agent" => "https://github.com/Aeilko/Advent-of-Code-#{AOC::YEAR}",
 				"Cookie" => "session=#{@session}",
 			]
 
