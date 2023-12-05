@@ -1,5 +1,7 @@
 require 'open-uri'
 
+# TODO: Overwrite Array's to_s method, cause the default `puts Array` output sucks
+
 module AOC
 
 	YEAR = 2023
@@ -48,6 +50,7 @@ module AOC
 		end
 
 		def run_part(part)
+			# TODO: add the option to track the runtime of a solution
 			puts "--- Part #{part} ---".yellow
 
 			# Check if the solve_partX method is implemented
