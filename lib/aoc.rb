@@ -1,7 +1,5 @@
 require 'open-uri'
 
-# TODO: Overwrite Array's to_s method, cause the default `puts Array` output sucks
-
 module AOC
 
 	YEAR = 2023
