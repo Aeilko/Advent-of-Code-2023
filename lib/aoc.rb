@@ -37,12 +37,28 @@ module AOC
 				end
 				@input = File.read(path)
 			end
-			if @test_input.nil? and not (@ans_test1.nil? and @ans_test2.nil?)
-				# TODO: Allow part 1 and 2 to have different test inputs
+			if not (@ans_test1.nil? and @ans_test2.nil?) and (@test_input1.nil? or @test_input2.nil?)
 				# Load test input of this day
 				path = "inputs/test/test_input%02d" % @num
-				if File.exist?(path)
+				if File.exist?(path) and @test_input.nil?
 					@test_input = File.read(path)
+				end
+
+				if @test_input1.nil?
+					p1_path = path + "_p1"
+					if File.exist?(p1_path)
+						@test_input1 = File.read(p1_path)
+					elsif not @test_input.nil?
+						@test_input1 = @test_input
+					end
+				end
+				if @test_input2.nil?
+					p2_path = path + "_p2"
+					if File.exist?(p2_path)
+						@test_input2 = File.read(p2_path)
+					elsif not @test_input.nil?
+						@test_input2 = @test_input
+					end
 				end
 			end
 		end
@@ -59,8 +75,9 @@ module AOC
 
 			# Run test if configured
 			ans_test = self.send("ans_test#{part}")
-			if not ans_test.nil? and not @test_input.nil?
-				test = self.send("solve_part#{part}", @test_input)
+			inp_test = self.send("test_input#{part}")
+			unless ans_test.nil? or inp_test.nil?
+				test = self.send("solve_part#{part}", inp_test)
 
 				if test != ans_test
 					puts "Test failed, result '#{test}', expected '#{ans_test}'".red

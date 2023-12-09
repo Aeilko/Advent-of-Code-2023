@@ -5,7 +5,7 @@ module Day08
 	extend AOC::Day
 
 	@num = 8
-	@ans_test1 = 2
+	@ans_test1 = 6
 	@ans_test2 = 6
 
 	def self.solve_part1(input)
