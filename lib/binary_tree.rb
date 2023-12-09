@@ -4,11 +4,10 @@ module BinaryTree
 		attr_reader :root
 
 		def initialize(root_val)
-			n = Node.new(root_val)
+			@root = Node.new(root_val)
 			@nodes = {
-				root_val => n
+				root_val => @root
 			}
-			@root = n
 		end
 
 		def node(val, left=nil, right=nil)
