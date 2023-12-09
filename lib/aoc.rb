@@ -11,7 +11,7 @@ module AOC
 		# Instance variables
 		attr_accessor :input, :test_input, :test_input1, :test_input2
 
-		def run
+		def run(track_runtime = false)
 			attr_defaults
 			puts "--- Running day #{@num} ---".yellow
 
@@ -22,8 +22,8 @@ module AOC
 				return
 			end
 
-			run_part 1
-			run_part 2
+			run_part 1, track_runtime
+			run_part 2, track_runtime
 		end
 
 		def load_inputs
@@ -63,8 +63,7 @@ module AOC
 			end
 		end
 
-		def run_part(part)
-			# TODO: add the option to track the runtime of a solution
+		def run_part(part, track_runtime = false)
 			puts "--- Part #{part} ---".yellow
 
 			# Check if the solve_partX method is implemented
@@ -88,8 +87,11 @@ module AOC
 			end
 
 			# Solve this part
+			start = Time.now
 			result = self.send("solve_part#{part}", @input)
-			puts "Result: #{result}"
+			stop = Time.now
+
+			puts "Result: #{result}#{(track_runtime ? "\t\t(Runtime: #{stop-start}s)" : "")}"
 		end
 
 		def attr_defaults

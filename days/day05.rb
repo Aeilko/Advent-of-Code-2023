@@ -45,7 +45,6 @@ module Day05
 
 		groups = groups[1..-1].map{ |group| group.lines[1..-1].map{|line| line.scan(/\d+/).map(&:to_i) } }
 		i = 0
-		start_time = Time.now
 		while true
 			num = i
 			groups.reverse_each do |group|
@@ -59,7 +58,6 @@ module Day05
 
 			seeds.each do |start, stop|
 				if num.between?(start, stop)
-					puts "Runtime: #{(Time.now-start_time).round}s"
 					return i
 				end
 			end
@@ -69,4 +67,4 @@ module Day05
 	end
 end
 
-Day05.run
+Day05.run true
